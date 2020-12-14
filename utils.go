@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"time"
 )
 
 var inputFile = "../input.txt"
@@ -34,4 +35,11 @@ func Atoi(s string) int {
 		log.Fatalf("cannot convert %v to int: %v", s, err)
 	}
 	return num
+}
+
+func Time() func() {
+	start := time.Now()
+	return func() {
+		log.Printf("solved in %v \n", time.Since(start))
+	}
 }
